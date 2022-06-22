@@ -19,7 +19,6 @@ function App() {
         }
       }
     );
-    localStorage.setItem("location", JSON.stringify(location));
   }, []);
 
   return <Cards {...location} />;
