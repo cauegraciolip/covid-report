@@ -17,14 +17,30 @@ type Data = {
   Recovered: string;
 };
 
-export const Cards = ({ lat, long }: Props) => {
+export const Cards = (location: Props) => {
   const [data, setData] = useState<Data[]>();
   const [today, setToday] = useState<Data>();
-  const [status, setStatus] = useState<string>();
+  const [country, setCountry] = useState<string>("");
 
-  async function getDataFromCountry() {
+  async function getUserCountryByCoords() {
+    const data = await axios.get(
+      "https://nominatim.openstreetmap.org/reverse?format=jsonv2&accept-language=en",
+      {
+        params: {
+          lat: location.lat,
+          lon: location.long,
+        },
+      }
+    );
+
+    setCountry(data.data.address.country);
+  }
+
+  async function getDataFromCountry(country: string) {
+    const address = country.split(" ").join("-").toLowerCase();
+
     const info = await axios.get(
-      `https://api.covid19api.com/total/country/brazil`
+      `https://api.covid19api.com/total/country/${address}`
     );
 
     setData(info.data);
@@ -32,9 +48,12 @@ export const Cards = ({ lat, long }: Props) => {
   }
 
   useEffect(() => {
-    getDataFromCountry();
-    console.log(today);
-  }, []);
+    getUserCountryByCoords();
+  }, [location]);
+
+  useEffect(() => {
+    if (country != "") getDataFromCountry(country);
+  }, [country]);
 
   return (
     <>
@@ -48,7 +67,10 @@ export const Cards = ({ lat, long }: Props) => {
       {data != undefined ? (
         data.map((item) => {
           return (
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              key={Math.random()}
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
               <p key={Math.random()}>{item.Active}</p>
               <p key={Math.random()}>{item.Confirmed}</p>
               <p key={Math.random()}>{item.Deaths}</p>
