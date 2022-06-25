@@ -7,7 +7,7 @@
 - [x] Trazer informações com os dados de localização do usuário;
 - [x] Salvar os dados de retorno com a localização para otimizar o app;
 - [x] Trazer os dados a partir do nome do país escrito em um campo de texto;
-- [ ] Criar um campo de autocomplete com os nomes dos países https://github.com/cristianoascari/paises-no-formato-JSON/blob/master/countriesJson_ptBR.json
+- [x] Criar um campo de autocomplete com os nomes dos países https://github.com/cristianoascari/paises-no-formato-JSON/blob/master/countriesJson_ptBR.json
 - [ ] Iniciar construção dos componentes;
 - [ ] Estilizar através de mobile-first;
 - [ ] Trazer dados do COVID desde o início da pandemia;
