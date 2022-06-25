@@ -6,7 +6,7 @@
 - [x] Iniciar o projeto com Typescript e React;
 - [x] Trazer informações com os dados de localização do usuário;
 - [x] Salvar os dados de retorno com a localização para otimizar o app;
-- [ ] Trazer os dados a partir do nome do país escrito em um campo de texto;
+- [x] Trazer os dados a partir do nome do país escrito em um campo de texto;
 - [ ] Criar um campo de autocomplete com os nomes dos países https://github.com/cristianoascari/paises-no-formato-JSON/blob/master/countriesJson_ptBR.json
 - [ ] Iniciar construção dos componentes;
 - [ ] Estilizar através de mobile-first;
